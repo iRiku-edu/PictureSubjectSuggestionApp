@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="enter_btn">
+    <h2>被写体を選択してください</h2>
+    <img src="{{ img_path }}" style="margin: 20px; vertical-align: bottom; width: 200px;">
+    
+    <form action="/select" method="post" enctype="multipart/form-data">
+        {% for candidate in result %}
+        <p>
+            <input type="radio" id="option_{{ loop.index }}" name="selected_candidate" value="{{ candidate }}">
+            <label for="option_{{ loop.index }}">{{ candidate }}</label>
+        </p>
+        {% endfor %}
+        
+        <p><input type="submit" value="送信" class="form-control btn btn-primary"></p>
+    </form>
+</div>
+
+{% endblock %}
